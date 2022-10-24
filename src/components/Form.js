@@ -53,6 +53,11 @@ const Form = ()=> {
                 <Label>Date</Label>
                 <Input name="date" type="date"/>
             </InputArea>
+            <InputArea>
+                <Label>Duration</Label>
+                <Input name="duration"/>
+            </InputArea>
+            
         
         </FormContainer>
     )
