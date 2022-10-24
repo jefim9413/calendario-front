@@ -29,7 +29,7 @@ const Form = ()=> {
 
     const Label = styled.label``;
 
-    const button = styled.button`
+    const Button = styled.button`
         padding: 10px;
         cursor: pointer;
         border-radius: 5px;
