@@ -16,6 +16,16 @@ export const Tbody = styled.tbody``;
 
 export const Tr = styled.tr``;
 
+export const Th = styled.th`
+  text-align: start;
+  border-bottom: inset;
+  padding-bottom: 5px;
+
+  @media (min-width: 500px) {
+    ${(props)=> props.onlyWeb && "display: none"}
+  }
+`;
+
 const Grid = () => {
     return (
      <Table></Table>
