@@ -1,7 +1,7 @@
 import GlobalStyle from "./styles/global";
-
 import { Form } from "./components/Form";
 import styled from "styled-components";
+import { Grid } from "./components/Grid";
 
 
 const Container = styled.div`
@@ -22,6 +22,7 @@ function App() {
       <Container>
         <Title> TAREFAS </Title>
         <Form />
+        <Grid/>
       </Container>
       <GlobalStyle/>
     </>
