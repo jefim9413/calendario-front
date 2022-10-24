@@ -34,7 +34,7 @@ const Form = ()=> {
         margin: 0px auto;
         padding: 17px;
         cursor: pointer;
-        border-radius: 5px;
+        border-radius: 15px;
         border: none;
         background-color: #2c73d2;
         color: while;
