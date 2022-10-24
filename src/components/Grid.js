@@ -14,6 +14,8 @@ export const Thead = styled.thead``;
 
 export const Tbody = styled.tbody``;
 
+export const Tr = styled.tr``;
+
 const Grid = () => {
     return (
      <Table></Table>
