@@ -1,3 +1,5 @@
+import GlobalStyle from "./styles/global";
+
 import { Form } from "./components/Form";
 import styled from "styled-components";
 
@@ -21,6 +23,7 @@ function App() {
         <Title> TAREFAS </Title>
         <Form />
       </Container>
+      <GlobalStyle/>
     </>
   );
 }
