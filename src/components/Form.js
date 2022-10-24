@@ -57,6 +57,7 @@ const Form = ()=> {
                 <Label>Duration</Label>
                 <Input name="duration"/>
             </InputArea>
+            <Button type="submit"> Salvar </Button>
         </FormContainer>
     )
 }
