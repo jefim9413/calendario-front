@@ -10,10 +10,12 @@ const Table = styled.table`
   margin: 20px auto;
   word-break: break-all;
 `
-
+export const Thead = styled.thead``;
 
 const Grid = () => {
     return (
-        <></>
+     <Table></Table>
     )
 }
+
+export { Grid }
