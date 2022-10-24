@@ -45,7 +45,10 @@ const Form = ()=> {
                 <Label>Title</Label>
                 <Input name="title"/>
             </InputArea>
-
+            <InputArea>
+                <Label>Description</Label>
+                <Input name="description"/>
+            </InputArea>
         </FormContainer>
     )
 }
