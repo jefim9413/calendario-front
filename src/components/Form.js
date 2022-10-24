@@ -49,6 +49,11 @@ const Form = ()=> {
                 <Label>Description</Label>
                 <Input name="description"/>
             </InputArea>
+            <InputArea>
+                <Label>Date</Label>
+                <Input name="date" type="date"/>
+            </InputArea>
+        
         </FormContainer>
     )
 }
