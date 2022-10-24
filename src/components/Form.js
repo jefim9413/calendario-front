@@ -27,6 +27,8 @@ const Form = ()=> {
         height: 40px;
     `
 
+    const Label = styled.label``;
+
     return (
         <FormContainer>
 
