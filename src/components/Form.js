@@ -57,8 +57,6 @@ const Form = ()=> {
                 <Label>Duration</Label>
                 <Input name="duration"/>
             </InputArea>
-            
-        
         </FormContainer>
     )
 }
