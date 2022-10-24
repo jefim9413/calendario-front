@@ -29,6 +29,16 @@ const Form = ()=> {
 
     const Label = styled.label``;
 
+    const button = styled.button`
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        background-color: #2c73d2;
+        color: while;
+        height: 42px;
+    `
+
     return (
         <FormContainer>
 
