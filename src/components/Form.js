@@ -14,6 +14,11 @@ const Form = ()=> {
         border-radius: 5px;
     `
 
+    const InputArea = styled.div` 
+        dispay: flex;
+        flex-direction: column;
+    `
+
     return (
         <FormContainer>
 
