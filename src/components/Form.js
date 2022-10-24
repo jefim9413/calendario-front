@@ -41,6 +41,10 @@ const Form = ()=> {
 
     return (
         <FormContainer>
+            <InputArea>
+                <Label>Title</Label>
+                <Input name="title"/>
+            </InputArea>
 
         </FormContainer>
     )
