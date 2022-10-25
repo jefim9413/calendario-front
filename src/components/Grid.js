@@ -1,4 +1,10 @@
+import axios from "axios";
+import { format, parseISO } from "date-fns";
+import { toast } from "react-toastify";
+
+import { FaTrash, FaEdit } from "react-icons/fa";
 import styled from "styled-components";
+import { ptBR } from "date-fns/locale";
 
 const Table = styled.table`
   width: 100%;
@@ -36,9 +42,56 @@ export const Td = styled.td`
   }
 `
 
-const Grid = () => {
+const Grid = ({tasks, setTasks, setOnEdit}) => {
+  const handleEdit = (item) => {
+    setOnEdit(item);
+  };
+
+  const handleDelete = async (id) => {
+    await axios
+      .delete("http://localhost:3333/task/" + id)
+      .then(({ data }) => {
+        const newArray = tasks.filter((user) => user.id !== id);
+
+        setTasks(newArray);
+        toast.success(data);
+      })
+      .catch(({ data }) => toast.error(data));
+
+    setOnEdit(null);
+  };
     return (
-     <Table></Table>
+     <Table>
+      <Thead>
+        <Tr>
+          <Th>Title</Th>
+          <Th>Description</Th>
+          <Th>Duration</Th>
+          <Th>Date</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
+        {tasks.map((item, i) => (
+          <Tr key={i}>
+            <Td width="30%">{item.title}</Td>
+            <Td width="30%">{item.description}</Td>
+            <Td width="30%">{item.duracao}</Td>
+            <Td width="30%">{format(parseISO(item.date), 'd MMM yy',{ locale: ptBR})
+          
+            }</Td>
+            <Td width="20%" onlyWeb>
+              {item.fone}
+            </Td>
+            <Td alignCenter width="5%">
+              <FaEdit onClick={() => handleEdit(item.id)} />
+            </Td>
+            <Td alignCenter width="5%">
+              <FaTrash onClick={() => handleDelete(item.id)} />
+            </Td>
+          </Tr>
+        ))}
+      </Tbody>
+     </Table>
     )
 }
 
