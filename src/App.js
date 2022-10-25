@@ -1,30 +1,42 @@
 import GlobalStyle from "./styles/global";
 import { Form } from "./components/Form";
-import styled from "styled-components";
 import { Grid } from "./components/Grid";
-
-
-const Container = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`
-
-const Title = styled.h2``
+import {Navbar} from "./components/Navbar";
+import { Route, Routes , BrowserRouter} from "react-router-dom";
+import  {ThemeProvider} from 'styled-components'
+import { darkTheme } from "./themes";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const [onEdit, setOnEdit] = useState(null);
+
+  const getTasks = async () => {
+    try {
+      const res = await axios.get("http://localhost:3333/task");
+      setTasks(res.data);
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getTasks();
+  }, [setTasks]);
+
   return (
     <>
-      <Container>
-        <Title> TAREFAS </Title>
-        <Form />
-        <Grid/>
-      </Container>
-      <GlobalStyle/>
+      <BrowserRouter>
+        <ThemeProvider theme={darkTheme}>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Grid />} />
+            <Route path="/account" element={<Form />} />
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
     </>
   );
 }
