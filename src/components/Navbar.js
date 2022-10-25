@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
-const HamburgerButton = styled.i`
+export const HamburgerButton = styled.i`
   position: absolute;
   top: 0;
   left: 0;
@@ -15,7 +15,7 @@ const HamburgerButton = styled.i`
   }
 `;
 
-const MobileMenu = styled.nav`
+export const MobileMenu = styled.nav`
   display: flex;
   background-color: ${({ theme }) => theme.elevation_2};
   position: absolute;
@@ -42,7 +42,7 @@ const MobileMenu = styled.nav`
   }
 `;
 
-const DesktopMenu = styled.nav`
+export const DesktopMenu = styled.nav`
   display: flex;
   background-color: ${({ theme }) => theme.elevation_2};
   align-items: center;
@@ -77,13 +77,13 @@ const Navbar = () => {
       <HamburgerButton className="fas fa-bars" onClick={() => setNav(c => !c)} />
 
       <MobileMenu open={navOpen}>
-        <Link to="/" onClick={() => setNav(false)}>
+        <Link to="/" onClick={() => setNav(false) } >
           <h1>Taregas</h1>
         </Link>
         <Link to="/" onClick={() => setNav(false)}>
           <p>Lista de Tarefas</p>
         </Link>
-        <Link to="/account" onClick={() => setNav(false)}>
+        <Link to="/account" onClick={() => setNav(false)} >
           <p>Account</p>
         </Link>
       </MobileMenu>
@@ -95,10 +95,10 @@ const Navbar = () => {
         <Link to="/">
           <p>Lista</p>
         </Link>
-        <Link to="/account">
+        <Link to="/buscar">
           <p>Buscar</p>
         </Link>
-        <Link to="/add">
+        <Link to="/form">
           <p>adicionar</p>
         </Link>
       </DesktopMenu>

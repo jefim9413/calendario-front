@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 const Table = styled.table`
   width: 100%;
   background-color: #fff;
-  padding: 20px;
+  padding: 5px;
   box-shadow: 0px 0px 5px #ccc;
   border-radius: 5px;
   max-width: 1120px;
