@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import styled from "styled-components";
 import { ptBR } from "date-fns/locale";
+import { useEffect, useState } from "react";
 
 const Table = styled.table`
   width: 100%;
@@ -42,7 +43,23 @@ export const Td = styled.td`
   }
 `
 
-const Grid = ({tasks, setTasks, setOnEdit}) => {
+const Grid = () => {
+  const [tasks, setTasks] = useState([]);
+  const [onEdit, setOnEdit] = useState(null);
+
+  const getTasks = async () => {
+    try {
+      const res = await axios.get("http://localhost:3333/task");
+      setTasks(res.data);
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getTasks();
+  }, [setTasks]);
+
   const handleEdit = (item) => {
     setOnEdit(item);
   };
@@ -51,10 +68,12 @@ const Grid = ({tasks, setTasks, setOnEdit}) => {
     await axios
       .delete("http://localhost:3333/task/" + id)
       .then(({ data }) => {
-        const newArray = tasks.filter((user) => user.id !== id);
+        const newArray = tasks.filter((task) => task.id !== id);
 
         setTasks(newArray);
         toast.success(data);
+        
+        
       })
       .catch(({ data }) => toast.error(data));
 
