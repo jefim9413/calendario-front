@@ -1,4 +1,3 @@
-
 import { Form } from "./components/Form";
 import { Grid } from "./components/Grid";
 import {Navbar} from "./components/Navbar";
@@ -7,22 +6,17 @@ import  {ThemeProvider} from 'styled-components'
 import { darkTheme } from "./themes";
 
 
-
 function App() {
   return (
     <>
       <BrowserRouter>
         <ThemeProvider theme={darkTheme}>
           <Navbar />
-        
             <Routes >
-              
               <Route path="/" element={<Grid />}/>
               <Route path="/form" element={<Form/>}>
                 <Route path=":id" element={<Form />}/>
-
               </Route>
-              
             </Routes>
         </ThemeProvider>
       </BrowserRouter>
