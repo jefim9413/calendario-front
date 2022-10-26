@@ -6,6 +6,7 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import styled from "styled-components";
 import { ptBR } from "date-fns/locale";
 import { useEffect, useState } from "react";
+import { Link} from "react-router-dom";
 
 const Table = styled.table`
   width: 100%;
@@ -60,10 +61,6 @@ const Grid = () => {
     getTasks();
   }, [setTasks]);
 
-  const handleEdit = (item) => {
-    setOnEdit(item);
-  };
-
   const handleDelete = async (id) => {
     await axios
       .delete("http://localhost:3333/task/" + id)
@@ -71,12 +68,10 @@ const Grid = () => {
         const newArray = tasks.filter((task) => task.id !== id);
 
         setTasks(newArray);
-        toast.success(data);
-        
-        
+        toast.success(data);  
       })
       .catch(({ data }) => toast.error(data));
-
+      
     setOnEdit(null);
   };
     return (
@@ -102,7 +97,9 @@ const Grid = () => {
               {item.fone}
             </Td>
             <Td alignCenter width="5%">
-              <FaEdit onClick={() => handleEdit(item.id)} />
+              <Link to={`/form/${item.id}`} >
+                <FaEdit/>
+              </Link>
             </Td>
             <Td alignCenter width="5%">
               <FaTrash onClick={() => handleDelete(item.id)} />
