@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 
 const FormContainer = styled.form`
         display: flex;
@@ -50,6 +51,9 @@ const FormContainer = styled.form`
 
 
 const Form = ()=> {
+
+    const {id }= useParams()
+
     const [task, setTask] = useState({
         title: "",
         description: "",
@@ -59,7 +63,29 @@ const Form = ()=> {
     const [status, setStatus] = useState({
         type: '',
         mensagem: ''
-      });
+    });
+    const [tes, setTes] = useState()
+    const [onEdit, setOnEdit ] = useState(null)
+    const getTask = async () => {
+        try {
+          const res = await axios.get("http://localhost:3333/task/"+ id);
+          
+            task.title = res.data.title;
+            task.description = res.data.description;
+            task.duracao = res.data.duracao;
+            task.date = Date(res.data.date);
+            setOnEdit(true)
+
+        } catch (error) {
+          toast.error(error);
+        }
+      };
+    
+    useEffect(() => {
+        if(id){
+            getTask();
+        }
+    }, [setTes]);
     
 
     const evento = (e)=> {
@@ -83,23 +109,34 @@ const Form = ()=> {
             });
           return toast.warn("Preencha todos os campos!");
         }
-        await axios
-            .post("http://localhost:3333/task", {
+        if (onEdit) {
+            await axios
+              .put("http://localhost:3333/task/" + id, {
                 title: user.title,
                 description: user.description,
                 date: new Date(user.date).toISOString(),
                 duracao: parseInt(user.duracao) ,
               })
-              .then(({ data }) => toast.success(data)) 
+              .then(({ data }) => toast.success(data))
               .catch(({ data }) => toast.error(data));
-              
+          }else{
+             await axios
+                .post("http://localhost:3333/task", {
+                    title: user.title,
+                    description: user.description,
+                    date: new Date(user.date).toISOString(),
+                    duracao: parseInt(user.duracao) ,
+                })
+                .then(({ data }) => toast.success(data)) 
+                .catch(({ data }) => toast.error(data));
+            }
     
         user.title= ""
         user.description=""
         user.duracao=""
         user.date=""
         setTask(user)
-       
+            setOnEdit(null)
         setStatus({
             type: 'success',
             mensagem: "Usuário cadastrado com sucesso!"
