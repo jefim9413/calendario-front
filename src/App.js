@@ -9,15 +9,20 @@ import { darkTheme } from "./themes";
 
 
 function App() {
-  
   return (
     <>
       <BrowserRouter>
         <ThemeProvider theme={darkTheme}>
           <Navbar />
+        
             <Routes >
+              
               <Route path="/" element={<Grid />}/>
-              <Route path="/form" element={<Form/>} />
+              <Route path="/form" element={<Form/>}>
+                <Route path=":id" element={<Form />}/>
+
+              </Route>
+              
             </Routes>
         </ThemeProvider>
       </BrowserRouter>
