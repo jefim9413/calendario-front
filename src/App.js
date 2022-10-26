@@ -15,10 +15,10 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={darkTheme}>
           <Navbar />
-          <Routes >
-            <Route path="/" element={<Grid />}/>
-            <Route path="/form" element={<Form/>} />
-          </Routes>
+            <Routes >
+              <Route path="/" element={<Grid />}/>
+              <Route path="/form" element={<Form/>} />
+            </Routes>
         </ThemeProvider>
       </BrowserRouter>
     </>
