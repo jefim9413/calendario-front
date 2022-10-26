@@ -83,8 +83,8 @@ const Navbar = () => {
         <Link to="/" onClick={() => setNav(false)}>
           <p>Lista de Tarefas</p>
         </Link>
-        <Link to="/account" onClick={() => setNav(false)} >
-          <p>Account</p>
+        <Link to="/form" onClick={() => setNav(false)} >
+          <p>Adicionar</p>
         </Link>
       </MobileMenu>
 
@@ -94,9 +94,6 @@ const Navbar = () => {
         </Link>
         <Link to="/">
           <p>Lista</p>
-        </Link>
-        <Link to="/buscar">
-          <p>Buscar</p>
         </Link>
         <Link to="/form">
           <p>adicionar</p>
